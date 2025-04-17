@@ -27,7 +27,7 @@ DARK_THEME = {
     "INSERTION_STYLE": "bold green",
     
     # Variant display
-    "VARIANT_ALLELE_STYLE": "bold white on yellow",
+    "VARIANT_ALLELE_STYLE": "bold white on green",
     
     # UI elements
     "HEADER_STYLE": "bold white on dark_green",
