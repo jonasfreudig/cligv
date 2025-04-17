@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cligv"
+version = "0.1.0"
+description = "command line Interactive Genome Viewer"
+readme = "README.md"
+authors = [
+    {name = "Jonas Freudigmann"},
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "pysam>=0.19.0",
+    "rich>=10.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/jonasfreudig/cligv"
+Documentation = "https://cligv.readthedocs.io"
+"Bug Tracker" = "https://github.com/jonasfreudig/cligv/issues"
+
+[project.scripts]
+cligv = "cligv.cli:main"
+
+[tool.setuptools]
+packages = ["cligv"]
+
+[tool.setuptools.package-data]
+cligv = ["py.typed"]
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
