@@ -5,6 +5,10 @@ This module contains the GenomeBrowser class that renders and manages the
 interactive genome viewer interface.
 """
 
+__version__ =  "0.1.0"
+__author__ = "Jonas Freudigmann"
+__license__ = "MIT"
+
 import logging
 import math
 import os
