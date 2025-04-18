@@ -4,9 +4,9 @@
 [![Conda Version](https://img.shields.io/conda/vn/conda-forge/cligv.svg)](https://anaconda.org/conda-forge/cligv)
 [![License](https://img.shields.io/github/license/jonasfreudig/cligv.svg)](https://github.com/jonasfreudig/cligv/blob/main/LICENSE)
 
-A fast, interactive genome browser for the terminal. clIGV (command line Interactive Genome Viewer) allows you to view genomic sequences, alignments, and variants directly in your terminal with a simple interface.
+A fast, interactive genome browser for the command line. clIGV (command line Interactive Genome Viewer) allows you to view genomic sequences, alignments, and variants directly in your terminal with a simple interface.
 
-<img src="docs/images/clIGV_img1.png" width="500">
+<img src="docs/images/clIGV_img1.png" width="900">
 
 ## Features
 
@@ -52,7 +52,7 @@ cligv reference.fasta -v variants.vcf.gz
 # View with read alignments
 cligv reference.fasta -b alignments.bam
 
-# View a specific region
+# Load directly to a specific region
 cligv reference.fasta -r chr1:1000-2000
 
 # Full example with all options
@@ -71,7 +71,7 @@ cligv reference.fasta -v variants.vcf.gz -b alignments.bam -r chr1:1000-2000 -t 
 
 ## Requirements
 
-- Python 3.7+
+- Python 3.8+
 - pysam
 - rich
 
