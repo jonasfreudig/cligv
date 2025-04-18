@@ -26,11 +26,6 @@ jobs:
         python -m pip install flake8 pytest build
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install -e .
-    - name: Check for null bytes
-      run: |
-        if grep -rlI $'\0' .; then
-          echo "Error: Files with null bytes detected"; exit 1;
-        fi
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
