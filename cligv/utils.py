@@ -80,45 +80,54 @@ def format_position(pos: int) -> str:
         Formatted position string with thousands separators
     """
     return f"{pos:,}"
-
+    
 
 def parse_region(region_str: Optional[str]) -> Optional[Tuple[str, Optional[int], Optional[int]]]:
     """
     Parse a genomic region string (chr:start-end or chr:pos or chr).
-    
+
     Args:
         region_str: Region string to parse
-        
+
     Returns:
         Tuple of (chromosome, start, end) if valid, None otherwise.
         Start and end are 1-based coordinates.
     """
-    if not region_str: 
+    if not region_str:
         return None
-        
+
     region_str = region_str.replace(',', '').strip()
-    
+
     # Match Chr:Start-End
-    match = re.match(r"([\w\.-]+):(\d+)-(\d+)", region_str)
+    match = re.fullmatch(r"([\w\.-]+):(\d+)-(\d+)", region_str)
     if match:
-        chrom, start, end = match.groups()
-        return chrom, int(start), int(end)
-        
-    # Match Chr:Start
-    match = re.match(r"([\w\.-]+):(\d+)", region_str)
+        chrom, start_str, end_str = match.groups()
+        try:
+            return chrom, int(start_str), int(end_str)
+        except ValueError:
+             logging.warning(f"Invalid numbers in region string '{region_str}'")
+             return None
+
+    # Match Chr:Pos (using pos_str for clarity)
+    match = re.fullmatch(r"([\w\.-]+):(\d+)", region_str)
     if match:
-        chrom, start = match.groups()
-        start_int = int(start)
-        view_start = max(1, start_int - DEFAULT_REGION_WIDTH // 2)
-        view_end = view_start + DEFAULT_REGION_WIDTH - 1
-        return chrom, view_start, view_end
-        
+        chrom, pos_str = match.groups()
+        try:
+            pos_int = int(pos_str)
+            # Calculate window around the position
+            view_start = max(1, pos_int - DEFAULT_REGION_WIDTH // 2)
+            view_end = view_start + DEFAULT_REGION_WIDTH - 1
+            return chrom, view_start, view_end
+        except ValueError:
+            logging.warning(f"Invalid position in region string '{region_str}'")
+            return None
+
     # Match Chr only
-    match = re.match(r"([\w\.-]+)", region_str)
+    match = re.fullmatch(r"([\w\.-]+)", region_str)
     if match:
         chrom = match.group(1)
         return chrom, 1, DEFAULT_REGION_WIDTH
-        
-    # Log warning if parsing fails
+
+    # If none of the re.fullmatch patterns matched the entire string:
     logging.warning(f"Could not parse region string '{region_str}'")
     return None
