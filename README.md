@@ -1,8 +1,8 @@
 # clIGV - command line Interactive Genome Viewer
 
 [![PyPI version](https://img.shields.io/pypi/v/cligv.svg)](https://pypi.org/project/cligv/)
-[![Conda Version](https://img.shields.io/conda/vn/conda-forge/cligv.svg)](https://anaconda.org/conda-forge/cligv)
-[![License](https://img.shields.io/github/license/jonasfreudig/cligv.svg)](https://github.com/jonasfreudig/cligv/blob/main/LICENSE)
+[![Conda Version](https://img.shields.io/conda/vn/bioconda/cligv.svg)](https://anaconda.org/bioconda/cligv)
+[![License](https://img.shields.io/github/license/jonasfreudig/cligv.svg)](https://github.com/jonasfreudig/cligv/blob/main/LICENSE.txt)
 
 A fast, interactive genome browser for the command line. clIGV (command line Interactive Genome Viewer) allows you to view genomic sequences, alignments, and variants directly in your terminal with a simple interface.
 
@@ -29,7 +29,7 @@ pip install cligv
 ### Using conda
 
 ```bash
-conda install -c conda-forge cligv
+conda install -c bioconda cligv
 ```
 
 ### From source
